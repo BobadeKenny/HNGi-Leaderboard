@@ -1,0 +1,13 @@
+.fa.fa-code {
+  font-size: larger;
+}
+
+.fa.fa-code {
+  font-size: x-large;
+  /*font-weight: 500;*/
+}
+
+.navbar-light .navbar-brand, .navbar-light .navbar-brand:focus, .navbar-light .navbar-brand:hover {
+  float: left;
+}
+
