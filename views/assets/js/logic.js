@@ -7,7 +7,18 @@ sortTable(value)
 
 })
 
-window.addEventListener('load', sortLeaders())
+window.addEventListener('load', function(){
+	var option = document.getElementById('select')
+	var value = option.options[option.selectedIndex].value
+ 	var table = document.getElementById("leaderboard");
+ 	var rows = table.rows;
+ 	var i = 0
+ 	sortTable(value)
+ 	rows[i].style.background='blue'
+ 	rows[i=1].style.background='green'
+ 	rows[i=2].style.background='red'
+
+})
 
 function sortTable(dir) {
   var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
@@ -86,64 +97,4 @@ function search() {
 }
 
 
-
-function sortLeaders() {
-  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-  table = document.getElementById("leaderboard");
-  switching = true;
-  var max = 0
-  var mid = 0
-  var min = 0
-  var row = []
-  // Set the sorting direction to ascending:
-  /* Make a loop that will continue until
-  no switching has been done: */
- 
-    rows = table.rows;
-            /* Loop through all table rows (except the
-    first, which contains table headers): */
-    for (i = 0; i < (rows.length); i++) {
-      // Start by saying there should be no switching:
-      shouldSwitch = false;
-      /* Get the two elements you want to compare,
-      one from current row and one from the next: */
-      x = rows[i].getElementsByTagName("TD")[3];
-      row[i] = Number(x.innerHTML)
-      max = Math.max(...row)
-
-      /* Check if the two rows should switch place,
-      based on the direction, asc or desc: */
-      
-    if (Number(x.innerHTML) == max) {
-      // If so, mark as a switch and break the loop:
-      rows[i].style.background='red'
-      const index = row.indexOf(max)
-      if (index > -1){
-      	row.splice(index, 1)
-      	mid = Math.max(...row)
-      }
-        
-      }
-        if (Number(x.innerHTML) == mid) {
-          // If so, mark as a switch and break the loop:
-          rows[i].style.background='green'
-          const index = row.indexOf(mid)
-      if (index > -1){
-      	row.splice(index, 1)
-      	min = Math.max(...row)
-      }
-
-        }
-        if (Number(x.innerHTML) == min) {
-          // If so, mark as a switch and break the loop:
-         
-          rows[i].style.background='pink'
-     
-
-          
-        }
-      }
-  
-  
-}   
 
